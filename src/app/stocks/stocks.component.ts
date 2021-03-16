@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { AccountService } from '../services/account.service';
 
 @Component({
@@ -6,13 +6,14 @@ import { AccountService } from '../services/account.service';
   templateUrl: './stocks.component.html',
   styleUrls: ['./stocks.component.css']
 })
+
 export class StocksComponent {
   @Input() stocks: any;
 
-  constructor(private accountService: AccountService) {}
+  constructor(private AccountService: AccountService) {}
 
-  buy(stock): void {
-
+  buy(stock:any): void {
+    this.AccountService.purchase(stock);
   }
 
 }
